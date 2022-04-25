@@ -6,7 +6,7 @@
 /*   By: cnorma <cnorma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 19:38:39 by cnorma            #+#    #+#             */
-/*   Updated: 2022/04/25 19:52:27 by cnorma           ###   ########.fr       */
+/*   Updated: 2022/04/25 21:21:25 by cnorma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ public:
 
 private:
 	int fixed_number;
-	static const int fractuinal_number;
+	static const int fractional_bits = 8;
 };
 
 #endif
