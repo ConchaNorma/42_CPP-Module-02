@@ -6,7 +6,7 @@
 /*   By: cnorma <cnorma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 19:46:45 by cnorma            #+#    #+#             */
-/*   Updated: 2022/04/25 23:13:22 by cnorma           ###   ########.fr       */
+/*   Updated: 2022/04/26 21:19:17 by cnorma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,24 +33,18 @@ Fixed::Fixed(const float value)
 Fixed::Fixed(const Fixed& other)
 {
 	std::cout << "Copy constructor called" << std::endl;
-	this->fixed_number = other.getRawBits();
+	*this = other;
 }
 
-Fixed& Fixed::operator=(const Fixed &other)
+Fixed& Fixed::operator= (const Fixed &other)
 {
 	std::cout << "Copy assignment operator called" << std::endl;
 	this->fixed_number = other.getRawBits();
 	return *this;
 }
 
-Fixed::~Fixed()
-{
-	std::cout << "Destructor called" << std::endl;
-}
-
 int Fixed::getRawBits( void ) const
 {
-	//std::cout << "getRawBits member function called" << std::endl;
 	return (this->fixed_number);
 }
 
@@ -69,8 +63,13 @@ int Fixed::toInt( void ) const
 	return (this->fixed_number >> this->fractional_bits);
 }
 
-std::ostream &operator << (std::ostream &out, Fixed const &fixed)
+Fixed::~Fixed()
 {
-	out << fixed.toFloat();
+	std::cout << "Destructor called" << std::endl;
+}
+
+std::ostream &operator<< (std::ostream &out, const Fixed  &fix)
+{
+	out << fix.toFloat();
 	return (out);
 }
