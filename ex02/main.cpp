@@ -6,7 +6,7 @@
 /*   By: cnorma <cnorma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 20:27:16 by cnorma            #+#    #+#             */
-/*   Updated: 2022/04/26 22:38:26 by cnorma           ###   ########.fr       */
+/*   Updated: 2022/04/27 22:24:17 by cnorma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	main( void )
 
 	std::cout << b << std::endl;
 
-	//std::cout << Fixed::max( a, b ) << std::endl;
+	std::cout << Fixed::max( a, b ) << std::endl;
 
 	return 0;
 }

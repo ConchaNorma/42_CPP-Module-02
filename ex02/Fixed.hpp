@@ -6,7 +6,7 @@
 /*   By: cnorma <cnorma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 19:38:39 by cnorma            #+#    #+#             */
-/*   Updated: 2022/04/26 22:39:35 by cnorma           ###   ########.fr       */
+/*   Updated: 2022/04/27 22:50:55 by cnorma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,16 +34,23 @@ public:
 
 	bool operator == (const Fixed &other);
 	bool operator!= (const Fixed &other);
-	bool operator> (const Fixed &other);
-	bool operator< (const Fixed &other);
-	bool operator>= (const Fixed &other);
-	bool operator<= (const Fixed &other);
+	bool operator> (const Fixed &other) const;
+	bool operator< (const Fixed &other) const;
+	bool operator>= (const Fixed &other) const;
+	bool operator<= (const Fixed &other) const;
 	Fixed operator+ (const Fixed &other);
 	Fixed operator- (const Fixed &other);
 	Fixed operator* (const Fixed &other);
 	Fixed operator/ (const Fixed &other);
 	Fixed& operator++ ();
-	Fixed operator++ (int value);
+	Fixed operator++ (int);
+	Fixed& operator-- ();
+	Fixed operator-- (int);
+
+	static const Fixed& max( Fixed const &a,  Fixed const &b);
+	static Fixed& max( Fixed &a,  Fixed &b);
+	static const Fixed& min( Fixed const &a,  Fixed const &b);
+	static Fixed& min( Fixed &a,  Fixed &b);
 
 private:
 	int fixed_number;
