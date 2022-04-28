@@ -6,7 +6,7 @@
 /*   By: cnorma <cnorma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 19:46:45 by cnorma            #+#    #+#             */
-/*   Updated: 2022/04/27 22:50:54 by cnorma           ###   ########.fr       */
+/*   Updated: 2022/04/28 19:59:25 by cnorma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,31 +14,26 @@
 
 Fixed::Fixed()
 {
-	//std::cout << "Default constructor called" << std::endl;
 	fixed_number = 0;
 }
 
 Fixed::Fixed(const int value)
 {
-	//std::cout << "Int constructor called" << std::endl;
 	this->fixed_number = value << this->fractional_bits;
 }
 
 Fixed::Fixed(const float value)
 {
-	//std::cout << "Float constructor called" << std::endl;
 	this->fixed_number = roundf(value * (1 << this->fractional_bits));
 }
 
 Fixed::Fixed(const Fixed& other)
 {
-	//std::cout << "Copy constructor called" << std::endl;
 	*this = other;
 }
 
 Fixed& Fixed::operator= (const Fixed &other)
 {
-	//std::cout << "Copy assignment operator called" << std::endl;
 	this->fixed_number = other.getRawBits();
 	return *this;
 }
@@ -173,10 +168,7 @@ Fixed& Fixed::min( Fixed &a,  Fixed &b)
 	return (b);
 }
 
-Fixed::~Fixed()
-{
-	//std::cout << "Destructor called" << std::endl;
-}
+Fixed::~Fixed(){}
 
 std::ostream &operator<< (std::ostream &out, const Fixed  &fix)
 {
