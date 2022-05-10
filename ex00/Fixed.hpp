@@ -6,7 +6,7 @@
 /*   By: cnorma <cnorma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 19:38:39 by cnorma            #+#    #+#             */
-/*   Updated: 2022/04/25 21:21:25 by cnorma           ###   ########.fr       */
+/*   Updated: 2022/05/10 19:44:06 by cnorma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ class Fixed
 {
 public:
 	Fixed();
-	Fixed(const Fixed &other);
-	Fixed& operator=(const Fixed &other);
+	Fixed(const Fixed &fixed);
+	Fixed& operator=(const Fixed &fixed);
 	~Fixed();
 
 	int getRawBits( void ) const;

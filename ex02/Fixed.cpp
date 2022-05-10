@@ -6,7 +6,7 @@
 /*   By: cnorma <cnorma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 19:46:45 by cnorma            #+#    #+#             */
-/*   Updated: 2022/04/28 19:59:25 by cnorma           ###   ########.fr       */
+/*   Updated: 2022/05/10 19:39:34 by cnorma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,24 +17,26 @@ Fixed::Fixed()
 	fixed_number = 0;
 }
 
-Fixed::Fixed(const int value)
+Fixed::Fixed(const int intValue)
 {
-	this->fixed_number = value << this->fractional_bits;
+	this->fixed_number = intValue << this->fractional_bits;
 }
 
-Fixed::Fixed(const float value)
+Fixed::Fixed(const float floatValue)
 {
-	this->fixed_number = roundf(value * (1 << this->fractional_bits));
+	this->fixed_number = roundf(floatValue * (1 << this->fractional_bits));
 }
 
-Fixed::Fixed(const Fixed& other)
+Fixed::Fixed(const Fixed& fixed)
 {
-	*this = other;
+	*this = fixed;
 }
 
-Fixed& Fixed::operator= (const Fixed &other)
+Fixed& Fixed::operator= (const Fixed &fixed)
 {
-	this->fixed_number = other.getRawBits();
+	if (this == &fixed)
+		return *this;
+	this->fixed_number = fixed.getRawBits();
 	return *this;
 }
 
@@ -80,26 +82,22 @@ bool Fixed::operator< (const Fixed &other) const
 
 bool Fixed::operator>= (const Fixed &other) const
 {
-	return (this->fixed_number < other.fixed_number);
+	return (this->fixed_number >= other.fixed_number);
 }
 
 bool Fixed::operator<= (const Fixed &other) const
 {
-	return (this->fixed_number < other.fixed_number);
+	return (this->fixed_number <= other.fixed_number);
 }
 
 Fixed Fixed::operator+ (const Fixed &other)
 {
-	Fixed temp;
-	temp = this->fixed_number + other.fixed_number;
-	return (temp);
+	return Fixed (this->toFloat() + other.toFloat());
 }
 
 Fixed Fixed::operator- (const Fixed &other)
 {
-	Fixed temp;
-	temp = this->fixed_number - other.fixed_number;
-	return (temp);
+	return (this->toFloat() - other.toFloat());
 }
 
 Fixed Fixed::operator* (const Fixed &other)
