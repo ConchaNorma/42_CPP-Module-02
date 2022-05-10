@@ -6,7 +6,7 @@
 /*   By: cnorma <cnorma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 19:38:39 by cnorma            #+#    #+#             */
-/*   Updated: 2022/05/10 19:37:03 by cnorma           ###   ########.fr       */
+/*   Updated: 2022/05/10 19:57:11 by cnorma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define FIXED_H
 
 # include <iostream>
-# include <string>
 # include <cmath>
 
 class Fixed
