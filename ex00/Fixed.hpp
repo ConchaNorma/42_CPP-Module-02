@@ -6,7 +6,7 @@
 /*   By: cnorma <cnorma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 19:38:39 by cnorma            #+#    #+#             */
-/*   Updated: 2022/05/10 19:44:06 by cnorma           ###   ########.fr       */
+/*   Updated: 2022/05/19 20:00:22 by cnorma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ public:
 	void setRawBits( int const raw );
 
 private:
-	int fixed_number;
-	static const int fractional_bits = 8;
+	int _number;
+	static const int _bits = 8;
 };
 
 #endif

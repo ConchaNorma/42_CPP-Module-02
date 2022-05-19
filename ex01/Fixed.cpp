@@ -6,7 +6,7 @@
 /*   By: cnorma <cnorma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 19:46:45 by cnorma            #+#    #+#             */
-/*   Updated: 2022/05/10 19:37:01 by cnorma           ###   ########.fr       */
+/*   Updated: 2022/05/19 21:17:22 by cnorma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,19 @@
 Fixed::Fixed()
 {
 	std::cout << "Default constructor called" << std::endl;
-	fixed_number = 0;
+	_number = 0;
 }
 
 Fixed::Fixed(const int intValue)
 {
 	std::cout << "Int constructor called" << std::endl;
-	this->fixed_number = intValue << this->fractional_bits;
+	this->_number = intValue << this->_bits;
 }
 
 Fixed::Fixed(const float floatValue)
 {
 	std::cout << "Float constructor called" << std::endl;
-	this->fixed_number = roundf(floatValue * (1 << this->fractional_bits));
+	this->_number = roundf(floatValue * (1 << this->_bits));
 }
 
 Fixed::Fixed(const Fixed& fixed)
@@ -41,28 +41,28 @@ Fixed& Fixed::operator= (const Fixed &fixed)
 	std::cout << "Copy assignment operator called" << std::endl;
 	if (this == &fixed)
 		return *this;
-	this->fixed_number = fixed.getRawBits();
+	this->_number = fixed.getRawBits();
 	return *this;
 }
 
 int Fixed::getRawBits( void ) const
 {
-	return (this->fixed_number);
+	return (this->_number);
 }
 
 void Fixed::setRawBits(int const raw)
 {
-	this->fixed_number = raw;
+	this->_number = raw;
 }
 
 float Fixed::toFloat( void ) const
 {
-	return ((double)this->fixed_number / (double)(1 << this->fractional_bits));
+	return ((float)this->_number / (1 << this->_bits));
 }
 
 int Fixed::toInt( void ) const
 {
-	return (this->fixed_number >> this->fractional_bits);
+	return (this->_number >> this->_bits);
 }
 
 Fixed::~Fixed()

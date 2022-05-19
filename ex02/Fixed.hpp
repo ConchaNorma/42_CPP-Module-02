@@ -6,7 +6,7 @@
 /*   By: cnorma <cnorma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 19:38:39 by cnorma            #+#    #+#             */
-/*   Updated: 2022/05/10 19:57:29 by cnorma           ###   ########.fr       */
+/*   Updated: 2022/05/19 21:24:09 by cnorma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,8 @@ public:
 	static Fixed& min( Fixed &a,  Fixed &b);
 
 private:
-	int fixed_number;
-	static const int fractional_bits = 8;
+	int _number;
+	static const int _bits = 8;
 };
 
 std::ostream &operator<< (std::ostream &out, const Fixed &fix);

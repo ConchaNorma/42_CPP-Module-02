@@ -6,7 +6,7 @@
 /*   By: cnorma <cnorma@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 19:46:45 by cnorma            #+#    #+#             */
-/*   Updated: 2022/05/10 19:39:34 by cnorma           ###   ########.fr       */
+/*   Updated: 2022/05/19 21:37:54 by cnorma           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,17 @@
 
 Fixed::Fixed()
 {
-	fixed_number = 0;
+	_number = 0;
 }
 
 Fixed::Fixed(const int intValue)
 {
-	this->fixed_number = intValue << this->fractional_bits;
+	this->_number = intValue << this->_bits;
 }
 
 Fixed::Fixed(const float floatValue)
 {
-	this->fixed_number = roundf(floatValue * (1 << this->fractional_bits));
+	this->_number = roundf(floatValue * (1 << this->_bits));
 }
 
 Fixed::Fixed(const Fixed& fixed)
@@ -36,58 +36,58 @@ Fixed& Fixed::operator= (const Fixed &fixed)
 {
 	if (this == &fixed)
 		return *this;
-	this->fixed_number = fixed.getRawBits();
+	this->_number = fixed.getRawBits();
 	return *this;
 }
 
 int Fixed::getRawBits( void ) const
 {
-	return (this->fixed_number);
+	return (this->_number);
 }
 
 void Fixed::setRawBits(int const raw)
 {
-	this->fixed_number = raw;
+	this->_number = raw;
 }
 
 float Fixed::toFloat( void ) const
 {
-	return ((double)this->fixed_number / (double)(1 << this->fractional_bits));
+	return ((double)this->_number / (double)(1 << this->_bits));
 }
 
 int Fixed::toInt( void ) const
 {
-	return (this->fixed_number >> this->fractional_bits);
+	return (this->_number >> this->_bits);
 }
 
 bool Fixed::operator == (const Fixed &other)
 {
-	return (this->fixed_number == other.fixed_number);
+	return (this->_number == other._number);
 }
 
 bool Fixed::operator!= (const Fixed &other)
 {
-	return !(this->fixed_number == other.fixed_number);
+	return !(this->_number == other._number);
 }
 
 bool Fixed::operator> (const Fixed &other) const
 {
-	return (this->fixed_number > other.fixed_number);
+	return (this->_number > other._number);
 }
 
 bool Fixed::operator< (const Fixed &other) const
 {
-	return (this->fixed_number < other.fixed_number);
+	return (this->_number < other._number);
 }
 
 bool Fixed::operator>= (const Fixed &other) const
 {
-	return (this->fixed_number >= other.fixed_number);
+	return (this->_number >= other._number);
 }
 
 bool Fixed::operator<= (const Fixed &other) const
 {
-	return (this->fixed_number <= other.fixed_number);
+	return (this->_number <= other._number);
 }
 
 Fixed Fixed::operator+ (const Fixed &other)
@@ -112,7 +112,7 @@ Fixed Fixed::operator/ (const Fixed &other)
 
 Fixed& Fixed::operator++ ()
 {
-	this->fixed_number++;
+	this->_number++;
 	return *this;
 }
 
@@ -120,13 +120,13 @@ Fixed Fixed::operator++ (int)
 {
 	Fixed temp (*this);
 
-	this->fixed_number++;
+	this->_number++;
 	return temp;
 }
 
 Fixed& Fixed::operator-- ()
 {
-	this->fixed_number--;
+	this->_number--;
 	return *this;
 }
 
@@ -134,7 +134,7 @@ Fixed Fixed::operator-- (int)
 {
 	Fixed temp (*this);
 
-	this->fixed_number--;
+	this->_number--;
 	return temp;
 }
 
